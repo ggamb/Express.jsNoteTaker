@@ -1,4 +1,4 @@
-var express = require('express');
+/*var express = require('express');
 
 var path = require('path');
 var app = express();
@@ -32,10 +32,10 @@ console.log('listening on port 3000');
 console.log('try:');
 console.log('  GET /hello.txt');
 console.log('  GET /js/app.js');
-console.log('  GET /css/style.css');
+console.log('  GET /css/style.css');*/
 
 
-/*const express = require('express');
+const express = require('express');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -47,9 +47,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Use apiRoutes
-app.use('/api', apiRoutes);
+app.use('/notes', apiRoutes);
 app.use('/', htmlRoutes);
 
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
-});*/
+});
