@@ -4,22 +4,7 @@ let saveNoteBtn;
 let newNoteBtn;
 let noteList;
 
-const fs = require('fs');
-const path = require('path');
-const fetch =  require('node-fetch');
-
-/*const domino = require('domino');
-const template = fs.readFileSync(path.join(__dirname.split('public')[1], '')).toString();
-const winObj = domino.createWindow(template);
-global['window'] = winObj;
-global['document'] = winObj.document;*/
-
-
-const savedNotes = require('../../../lib/db/db.json');
-
-
-
-if (global.location === '/notes') {
+if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -41,27 +26,55 @@ const hide = (elem) => {
 let activeNote = {};
 
 const getNotes = () => {
-  fetch('/notes', {
+  fetch('/api/notes', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
+  }).then(response => {
+    console.log(response);
+    if (!response.ok) {
+      console.log(`Error: Incorrect input`);
+    }
+    return response.json();
+  })
+  .then(notesArray => {
+    return notesArray;
   });
+
+  //return savedNotes;
+  /*.then(res =>  {
+    console.log(res);
+    console.log(res.body);
+    return res;
+  })
+  .catch(error => console.log(error))*/
 }
   
 
 const saveNote = (note) => {
-  fetch('/notes', {
+  console.log("post note", note);
+  fetch('/api/notes', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-    },
+    }, 
     body: JSON.stringify(note),
+  })
+  .then(response => {
+    console.log(response);
+    if (!response.ok) {
+      console.log(`Error: Incorrect API call`);
+    }
+    return response.json();
+  })
+  .then(notesArray => {
+    return notesArray;
   });
 }
 
 const deleteNote = (id) => {
-  fetch(`/notes/${id}`, {
+  fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -90,6 +103,7 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value,
   };
+  console.log(newNote);
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
@@ -137,6 +151,7 @@ const handleRenderSaveBtn = () => {
 
 // Render the list of note titles
 const renderNoteList = async (notes) => {
+  console.log(notes);
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
     noteList.forEach((el) => (el.innerHTML = ''));
@@ -189,25 +204,12 @@ const renderNoteList = async (notes) => {
   }
 };
 
-function createNewNote(body, id) {
-  console.log("passed params", body, id);
-  const newNote = {
-    'title': body.title,
-    'text': body.text,
-    'id' : id
-  }
-  savedNotes.push(newNote);
-  fs.writeFileSync(
-    path.join(__dirname, '../../../lib/db/db.json'),
-    JSON.stringify({ savedNotes }, null, 2)
-  );
-  return newNote;
-}
-
 // Gets notes from the db and renders them to the sidebar
-const getAndRenderNotes = () => getNotes().then(renderNoteList);
+const getAndRenderNotes = () => getNotes()
+//.then(renderNoteList)
+//.catch(err => {console.log(err)})
 
-if (global.location === '/notes') {
+if (window.location.pathname === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
@@ -215,4 +217,3 @@ if (global.location === '/notes') {
 }
 
 getAndRenderNotes();
-
