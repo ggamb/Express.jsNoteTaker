@@ -3,16 +3,18 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
+const window = {};
 
-console.log("hello world");
 
-console.log("pathname", window.location.pathname)
+const savedNotes = require('../../../lib/db/db.json');
+
+const fs = require('fs');
+const path = require('path');
 
 if (window.location.pathname === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
-  console.log(saveNoteBtn);
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
 }
@@ -178,6 +180,21 @@ const renderNoteList = async (notes) => {
     noteListItems.forEach((note) => noteList[0].append(note));
   }
 };
+
+function createNewNote(body, id) {
+  console.log("passed params", body, id);
+  const newNote = {
+    'title': body.title,
+    'text': body.text,
+    'id' : id
+  }
+  savedNotes.push(newNote);
+  fs.writeFileSync(
+    path.join(__dirname, '../../../lib/db/db.json'),
+    JSON.stringify({ savedNotes }, null, 2)
+  );
+  return newNote;
+}
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
