@@ -3,15 +3,23 @@ let noteText;
 let saveNoteBtn;
 let newNoteBtn;
 let noteList;
-const window = {};
+
+const fs = require('fs');
+const path = require('path');
+const fetch =  require('node-fetch');
+
+/*const domino = require('domino');
+const template = fs.readFileSync(path.join(__dirname.split('public')[1], '')).toString();
+const winObj = domino.createWindow(template);
+global['window'] = winObj;
+global['document'] = winObj.document;*/
 
 
 const savedNotes = require('../../../lib/db/db.json');
 
-const fs = require('fs');
-const path = require('path');
 
-if (window.location.pathname === '/notes') {
+
+if (global.location === '/notes') {
   noteTitle = document.querySelector('.note-title');
   noteText = document.querySelector('.note-textarea');
   saveNoteBtn = document.querySelector('.save-note');
@@ -199,7 +207,7 @@ function createNewNote(body, id) {
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes().then(renderNoteList);
 
-if (window.location.pathname === '/notes') {
+if (global.location === '/notes') {
   saveNoteBtn.addEventListener('click', handleNoteSave);
   newNoteBtn.addEventListener('click', handleNewNoteView);
   noteTitle.addEventListener('keyup', handleRenderSaveBtn);
