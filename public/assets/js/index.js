@@ -69,6 +69,7 @@ const saveNote = (note) => {
     return response.json();
   })
   .then(notesArray => {
+    console.log(notesArray)
     return notesArray;
   });
 }
@@ -101,13 +102,15 @@ const renderActiveNote = () => {
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
-    text: noteText.value,
+    text: noteText.value
   };
   console.log(newNote);
-  saveNote(newNote).then(() => {
-    getAndRenderNotes();
-    renderActiveNote();
-  });
+  saveNote(newNote)
+  getAndRenderNotes();
+  renderActiveNote();
+  /*.then(() => {
+    
+  });*/
 };
 
 // Delete the clicked note
@@ -203,6 +206,10 @@ const renderNoteList = async (notes) => {
     noteListItems.forEach((note) => noteList[0].append(note));
   }
 };
+
+const writeNote() => {
+
+}
 
 // Gets notes from the db and renders them to the sidebar
 const getAndRenderNotes = () => getNotes()
