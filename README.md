@@ -19,7 +19,7 @@ To run this code, clone the code above, navigate to the correct directory, open 
 Once they are properly installed, type `node index` to run the code.
 
 ## Usage
-See this video for an example for how to use this Team Profile Generator:
+See this video for an example for how to use this Note Taker:
 
 COMING SOON
 
