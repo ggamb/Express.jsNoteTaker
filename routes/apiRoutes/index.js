@@ -1,25 +1,36 @@
 const router = require('express').Router();
-const notes = require('../../lib/db/db.json');
+const { notesArray } = require('../../lib/db/db.json')
+const { createNewNote, writeAfterDelete } = require('../../lib/js/script');
 const uniqid = require('uniqid');
 
 
 router.get('/notes', (req, res) => {
-    console.log(notes);
-    res.json(notes);
+    res.json(notesArray);
 });
 
 router.post('/notes', (req, res) => {
-    let newId = uniqid();
+    req.body.id = uniqid();
 
-    const newNote = {
-        'title' : req.body.title,
-        'text' : req.body.text,
-        'id' : newId
-    }
-
-    //notesArray.push(newNote);
+    let newNote = createNewNote(req.body, notesArray);
 
     res.json(newNote);
+});
+
+router.delete('/notes/:id', (req, res) => {
+    const idToRemove = req.params.id;
+    console.log(idToRemove);
+
+    console.log(notesArray);
+
+    for(let i = 0; i < notesArray.length; i++) {
+        if(notesArray[i].id === idToRemove) {
+            notesArray.splice(i,1);
+            break;
+        }
+    }
+
+    writeAfterDelete(notesArray);
+    res.json(200);
 });
   
 module.exports = router;
