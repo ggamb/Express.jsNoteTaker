@@ -1,3 +1,4 @@
+//Variables to run router
 const express = require('express');
 
 const PORT = process.env.PORT || 3001;
@@ -9,10 +10,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-// Use apiRoutes
+// Use html or api routes
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
 
+//Server listener
 app.listen(PORT, () => {
   console.log(`API server now on port ${PORT}!`);
 });
