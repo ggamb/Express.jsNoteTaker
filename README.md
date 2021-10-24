@@ -14,12 +14,11 @@ To use the Note Taker, enter a note title and note text in the appropriate field
 
 Demo website output: ![screencapture-intense-gorge-77486-herokuapp-notes-2021-10-23-20_59_08](https://user-images.githubusercontent.com/86434738/138576336-161b2f52-f628-49c2-84b4-ec73ae2ddf8d.png)
 
-
 ## Installation
 
-To run this code, clone the code above, navigate to the correct directory, open it in your IDE, and run `npm install` in the terminal to install all dependencies.
+To run this code, clone the code above, navigate to the correct directory, open it in your IDE, and run `npm install` in the terminal to install all dependencies. Once they are properly installed, type `npm start` to run the code. This will start the server and allow the user to nagivate to localhost/3001 in their browser to use the application.
 
-Once they are properly installed, type `node index` to run the code.
+Alternatively, use [this](https://intense-gorge-77486.herokuapp.com/) heroku link.
 
 ## Usage
 See this video for an example for how to use this Note Taker:
