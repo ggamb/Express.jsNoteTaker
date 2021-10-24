@@ -21,9 +21,6 @@ router.post('/notes', (req, res) => {
 //Deletes a note when user hits trash can icon
 router.delete('/notes/:id', (req, res) => {
     const idToRemove = req.params.id;
-    console.log(idToRemove);
-
-    console.log(notesArray);
 
     for(let i = 0; i < notesArray.length; i++) {
         if(notesArray[i].id === idToRemove) {
