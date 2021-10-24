@@ -8,9 +8,12 @@
 * [Questions](#questions)
 
 ## Description
+To create this Note Taker app, I used cloned client-side code provided by the UT Coding Bootcamp and created the back-end using Express.js.
 
+To use the Note Taker, enter a note title and note text in the appropriate fields and click the save icon in the top-right corner. After saving, the note will be saved and persist across uses. Users can click on saved notes to show the note title and note text. To clear text from the fields, use the plus icon in the top right corner. Notes can be deleted with the trash can icon.
 
-Demo website output: 
+Demo website output: ![screencapture-intense-gorge-77486-herokuapp-notes-2021-10-23-20_59_08](https://user-images.githubusercontent.com/86434738/138576336-161b2f52-f628-49c2-84b4-ec73ae2ddf8d.png)
+
 
 ## Installation
 
