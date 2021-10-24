@@ -23,7 +23,8 @@ Alternatively, use [this](https://intense-gorge-77486.herokuapp.com/) heroku lin
 ## Usage
 See this video for an example for how to use this Note Taker:
 
-COMING SOON
+https://user-images.githubusercontent.com/86434738/138594245-a606ab4b-d7f6-4e2b-b4d8-1e9a7068b6b6.mp4
+
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
