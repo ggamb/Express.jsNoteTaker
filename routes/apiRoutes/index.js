@@ -3,6 +3,7 @@ const router = require('express').Router();
 const { notesArray } = require('../../lib/db/db.json')
 const { createNewNote, writeAfterDelete } = require('../../lib/js/script');
 const uniqid = require('uniqid');
+console.log("test")
 
 //Returns notes in the lin/db/db.json file
 router.get('/notes', (req, res) => {

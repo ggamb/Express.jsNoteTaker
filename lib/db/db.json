@@ -1,3 +1,19 @@
 {
-  "notesArray": []
+  "notesArray": [
+    {
+      "title": "Buy dog food",
+      "text": "Ubu is hungry!",
+      "id": "1cks0t7f8kv57at5q"
+    },
+    {
+      "title": "Patriots vs Jets on Sunday",
+      "text": "1PM kickoff. Can't lose to the Jets",
+      "id": "1cks0t7f8kv57berm"
+    },
+    {
+      "title": "Note title test",
+      "text": "Note text test",
+      "id": "1cks0t5d0kv57jae1"
+    }
+  ]
 }

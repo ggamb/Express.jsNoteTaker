@@ -1,6 +1,7 @@
 //Varaibles to run htmlRoutes
 const path = require('path');
 const router = require('express').Router();
+console.log("test")
 
 //For "/notes" path
 router.get('/notes', (req, res) => {
